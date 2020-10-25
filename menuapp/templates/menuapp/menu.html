@@ -1,0 +1,176 @@
+{% extends 'main/base.html' %} {% load static %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'menuapp/css/menu.css' %}" />
+{% endblock css %}
+
+<!-- 기본 Navbar -->
+
+{% block content %}
+<div class="layout">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h3>Category</h3>
+        <ul class="category">
+            <a href="">
+                <li class="categoryId" id="c1">커피</li>
+            </a>
+            <a href="">
+                <li class="categoryId" id="c2">주스</li>
+            </a>
+            <a href="">
+                <li class="categoryId" id="c3">티</li>
+            </a>
+            <a href="">
+                <li class="categoryId" id="c4">스무디/프라푸치노</li>
+            </a>
+            <a href="">
+                <li class="categoryId" id="c5">논커피</li>
+            </a>
+            <a href="">
+                <li class="categoryId" id="c6">디저트</li>
+            </a>
+        </ul>
+    </div>
+    <!-- sidebar 오른쪽 메인부분 -->
+    <div class="maincontainer">
+        <!-- 버튼자리 -->
+        <div class="button-container">
+            <a class="btn btn-primary" href="{% url 'checkmenu' %}" role="button">주문확인</a>
+        </div>
+        <!-- 메뉴자리 -->
+        <div class="menulist">
+            {% for menu in menus %}
+            {% if menu.user_id == user %}
+            <div class="card">
+                {% if menu.m_img %}
+                <img class="card-img-top" src="{{ menu.m_img.url }}" alt="" />
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ menu.m_name }}</h5>
+                    <p class="card-text">{{ menu.m_info }}</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">{{ menu.m_price }}원</span>
+                    <a href="{% url 'optionmenu' pk=menu.pk %}" class="btn btn-primary">주문</a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <!-- 예시 -->
+            <div class="card">
+                <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">아이스아메리카노</h5>
+                    <p class="card-text">실제 등록된 메뉴가 아닌 예시입니다. 사장님이 등록한 메뉴만 주문 가능합니다.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">4500원</span>
+                    <a href="#" class="btn btn-primary">주문</a>
+                </div>
+            </div>
+            <!-- <div class="card">
+                <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">아이스아메리카노</h5>
+                    <p class="card-text">메뉴에 대한 간단한 설명</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">4500원</span>
+                    <a href="#" class="btn btn-primary">주문</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">아이스아메리카노</h5>
+                    <p class="card-text">메뉴에 대한 간단한 설명</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">4500원</span>
+                    <a href="#" class="btn btn-primary">주문</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">아이스아메리카노</h5>
+                    <p class="card-text">메뉴에 대한 간단한 설명</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">4500원</span>
+                    <a href="#" class="btn btn-primary">주문</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">아이스아메리카노</h5>
+                    <p class="card-text">메뉴에 대한 간단한 설명</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">4500원</span>
+                    <a href="#" class="btn btn-primary">주문</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">아이스아메리카노</h5>
+                    <p class="card-text">메뉴에 대한 간단한 설명</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">4500원</span>
+                    <a href="#" class="btn btn-primary">주문</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">아이스아메리카노</h5>
+                    <p class="card-text">메뉴에 대한 간단한 설명</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">4500원</span>
+                    <a href="#" class="btn btn-primary">주문</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">아이스아메리카노</h5>
+                    <p class="card-text">메뉴에 대한 간단한 설명</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">4500원</span>
+                    <a href="#" class="btn btn-primary">주문</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">아이스아메리카노</h5>
+                    <p class="card-text">메뉴에 대한 간단한 설명</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">4500원</span>
+                    <a href="#" class="btn btn-primary">주문</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">아이스아메리카노</h5>
+                    <p class="card-text">메뉴에 대한 간단한 설명</p>
+                </div>
+                <div class="card-footer">
+                    <span class="price">4500원</span>
+                    <a href="#" class="btn btn-primary">주문</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

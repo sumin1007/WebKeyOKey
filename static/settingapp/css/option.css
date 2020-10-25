@@ -1,0 +1,52 @@
+.layout {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  
+.container {
+    padding: 8rem 15rem;
+    text-align: center;
+    height: 100%;
+  }
+
+.buttons{
+    margin-top: 100px;
+}
+
+.h1{
+    text-align: center;
+}
+
+.menuname{
+  margin-bottom: 100px;
+  /* color: #ff9966; */
+}
+
+.optionetc{
+  text-align: left;
+  margin-left: 25px;
+}
+
+p{
+  font-size: 22px;
+}
+
+form{
+
+}
+
+.input-style {
+  text-align: left;
+  color: #ff9966;
+  border: 1px solid #ff9966;
+}
+
+.input-style::placeholder {
+    color: #ff9966;
+}
+
+label{
+  font-size: 20px;
+  color: #ff9966;
+}

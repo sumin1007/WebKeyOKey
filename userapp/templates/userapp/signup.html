@@ -1,0 +1,93 @@
+{% extends 'main/base.html' %} {% load static %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'userapp/css/signup.css' %}" />
+{% endblock css%}
+
+<!-- 기본 Navbar 변형 로고누르면 홈으로 -->
+{% block nav %}
+<nav class="navbar sticky-top navbar-light nav-color nav-center">
+    <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'main/img/logo/OK_가로형v.png' %}" width="130" height="30" class="d-inline-block align-top" alt=" " loading="lazy" />
+    </a>
+</nav>
+{% endblock nav %}
+
+<!-- Content -->
+
+{% block content %}
+<div class="container">
+    {% if error %}
+    <h3 style="color:red">{{error}}</h3>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <!-- <div class="name">
+        <div class="col">
+            <input type="text" class="form-control input-style" name="username" value="{{username}}" placeholder="이름">
+        </div>
+        </div>
+    
+        <div class="email">
+        <div class="col">
+            <input type="email" class="form-control input-style" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="이메일 주소" name="email" value="{{email}}">
+        </div>
+        </div>
+
+        <div class="phonenumber">
+        <div class="col">
+            <input type="text" class="form-control input-style" placeholder="전화번호"  name="phone" value="{{phone}}">
+        </div>   
+        </div>
+
+        <div class="id">
+        <div class="col">   
+            <input type="text" class="form-control input-style" placeholder="아이디(사업자번호 10자리)" name="u_id" value="{{u_id}}">
+        </div>
+        </div>
+
+        <div class="password">
+        <div class="col">
+            <input type="password" class="form-control input-style" id="exampleInputPassword1" placeholder="비밀번호" name="password" value="{{password}}" >
+        </div>
+        </div>
+
+        <div class="repassword">
+        <div class="col">
+            <input type="password" class="form-control input-style" id="inputPassword2" placeholder="비밀번호 재입력" name="password_check" value="{{password_check}}">
+        </div> -->
+
+        <!-- <div class="col-3">
+            <a class="checkpasswordbutton" href='#'>
+            <button type="submit" class="btn btn-primary mb-2">확인</button>
+            </a>
+        </div> -->
+        <!-- </div>
+
+        <div class="question">
+        <div class="col">
+            <select class="form-control input-style" id="exampleFormControlSelect1" placeholder="비밀번호 찾기 질문" name="question_id" value="{{question_id}}">
+            <option>나의 보물 1호는?</option>
+            <option>나의 고향은?</option>
+            <option>붕어빵 먹을 때 가장 먼저 먹는 부위는?</option>
+            <option>나의 MBTI는?</option>
+            <option>돌잡이 때 잡은 것은?</option>
+            </select>
+        </div>
+        </div>
+
+        <div class="answer">
+        <div class="col">
+            <input type="text" class="form-control input-style" placeholder="답변" name="answer" value="{{answer}}">
+        </div>
+        </div> -->
+
+        <a class="signupbutton">
+        <button type="submit" class="btn btn-primary">회원가입</button>
+        </a> 
+    </form>
+</div>
+
+{% endblock content %}

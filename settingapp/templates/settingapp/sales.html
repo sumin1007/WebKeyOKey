@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %} {% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'settingapp/css/sales.css' %}" />
+{% endblock css %}
+
+<!-- setting.html용 boss Navbar -->
+{% block nav %}
+<nav class="navbar sticky-top navbar-light nav-color">
+    <a class="navbar-brand" href="{% url 'boss' %}">
+        <img src="{% static 'main/img/logo/OK_가로형v.png' %}" width="130" height="30" margin-left="20" class="d-inline-block align-top" alt=" " loading="lazy" />
+    </a>
+
+    <div class="bossbuttons">
+        <a href="{% url 'logout' %}" class="btn btn-primary">로그아웃</a>
+        <a href="{% url 'order' %}" class="btn btn-primary">주문확인</a>
+        <a href="{% url 'setting' %}" class="btn btn-primary">설정</a>
+    </div>
+</nav>
+{% endblock nav %}
+
+{% block content %}
+<div class="container">
+    <div class="sale">
+        <div class="card">
+            <h3>년 매출</h3>
+            <h1>{{pyear}}</h1>
+        </div>
+        <div class="card">
+            <h3>월 매출</h3>
+            <h1>{{pmonth}}</h1>
+        </div>
+        <div class="card">
+            <h3>일 매출</h3>
+            <h1>{{pday}}</h1>
+        </div>
+    </div>
+    <div class="calendarbox">
+        <div class="my-btn-group">
+            <a role="button" class="btn btn-outline-mycolor left" href="{% url 'sales' %}?{{ prev_month }}">이전 달</a>
+            <a role="button" class="btn btn-outline-mycolor right" href="{% url 'sales' %}?{{ next_month }}">다음 달</a>
+        </div>
+        {{ calendar }}
+    </div>
+</div>
+{% endblock content %}

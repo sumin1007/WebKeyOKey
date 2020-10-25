@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %} {% load static%}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'settingapp/css/setting.css' %}" />
+{% endblock css%}
+
+
+<!-- setting.html용 boss Navbar -->
+{% block nav %}
+<nav class="navbar sticky-top navbar-light nav-color">
+    <a class="navbar-brand" href="{% url 'boss' %}">
+        <img src="{% static 'main/img/logo/OK_가로형v.png' %}" width="130" height="30" margin-left="20" class="d-inline-block align-top" alt=" " loading="lazy" />
+    </a>
+
+    <div class="bossbuttons">
+        <a href="{% url 'logout' %}" class="btn btn-primary">로그아웃</a>
+        <a href="{% url 'order' %}" class="btn btn-primary">주문확인</a>
+        <a href="{% url 'setting' %}" class="btn btn-primary">설정</a>
+    </div>
+</nav>
+{% endblock nav %}
+
+{% block content %}
+<div class="container">
+<h1>설정</h1>
+<div class="card">
+        <a href="{% url 'sales' %}" class="btn btn-link">매출확인</a>
+        <h6 class="description">년,월,일 매출을 확인 할 수 있습니다.</h6>
+    
+</div>
+<div class="card">
+        <a href="{% url 'settingmenu' %}" class="btn btn-link">메뉴수정</a>
+        <h6 class="description">메뉴 추가 및 수정,삭제등을 할 수 있습니다.</h6>
+</div>
+<div class="card">
+        <a href="{% url 'bye' %}" class="btn btn-link">서비스 해지</a>
+        <h6 class="description">저희 서비스를 해지 할 수 있습니다.</h6>
+</div>
+</div>
+{% endblock content %}

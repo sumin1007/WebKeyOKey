@@ -1,0 +1,87 @@
+{% extends 'main/base.html' %} {% load static %}
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'menuapp/css/optionmenu.css' %}" />
+{% endblock css %}
+
+<!-- 기본 Navbar -->
+
+<!-- Content -->
+{% block content %}
+<div class="container layout">
+    <div class="menu">
+        <div class="card">
+            {% if menu.m_img %}
+            <img class="card-img-top" src="{{ menu.m_img.url }}" alt="" />
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ menu.m_name }}</h5>
+                <p class="card-text">{{ menu.m_info }}</p>
+                <span class="price">{{ menu.m_price }}</span>
+            </div>
+        </div>
+        <!-- 예시
+        <div class="card">
+            <img src="{% static 'menuapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">Menu title</h5>
+                <p class="card-text">메뉴에 대한 간단한 설명</p>
+                <span class="price">4500원</span>
+            </div>
+        </div> -->
+    </div>
+    <div class="optionform">
+        <form method="POST" action="{% url 'optionmenu' pk=menu.pk %}">
+            {% csrf_token %}
+            <!-- 포장유무선택 -->
+            <div class="takeout">
+                {% if menu.m_takeout %}
+                <label for="takeout">포장하시겠습니까?</label><input name="takeout" type="checkbox" value="True" id="takeout" />
+                {% else %}
+                <p>포장이 불가능한 메뉴입니다.</p>
+                {% endif %}
+            </div>
+            <!-- 수량선택 -->
+            <div class="count"><label for="count">수량</label><input type="number" name="count" id="count" value="1" /></div>
+            <!-- 옵션선택 -->
+            <div class="option">
+                <h5>추가옵션 선택</h5>
+                <ul>
+                    {% for m in menu.options.all %}
+                    <li><input type="checkbox" name="option[]" id="{{m}}" value="{{m}}" /><label for="{{m}}">{{ m.option_name }}({{m.option_price}}원)</label></li>
+                    {% endfor %}
+                    <!-- 예시
+                    <li><input type="checkbox" name="option" id="o1" /><label for="o1">옵션1(옵션가격)</label></li>
+                    <li><input type="checkbox" name="option" id="o2" /><label for="o2">옵션2(500원)</label></li>
+                    <li><input type="checkbox" name="option" id="o3" /><label for="o3">옵션3(500원)</label></li>
+                    <li><input type="checkbox" name="option" id="o4" /><label for="o4">옵션4(500원)</label></li>
+                    <li><input type="checkbox" name="option" id="o5" /><label for="o5">옵션5(500원)</label></li> -->
+                </ul>
+            </div>
+            <input type="submit" class="btn btn-primary btn-lg" value="추가" onclick="javascript:btn()" />
+        </form>
+        <script>
+            function btn() {
+                alert("바구니에 추가되었습니다.");
+                // 추가버튼 눌러서 바구니에 담고 확인버튼 누르면 바로 주문확인페이지로 넘어갈 순 없나..?
+                // var ok;
+                // ok = confirm("바구니에 추가되었습니다. 바구니를 확인하시겠습니까?");
+
+                // if (ok) {
+                //     location.href = "{% url 'checkmenu' %}";
+                // }
+            }
+        </script>
+        <!-- 금액표시 -->
+        <!-- <div class="alert alert-primary">
+            <span>총 금액 <strong class="float-right">20000원</strong></span>
+        </div> -->
+
+        <!-- Buttons -->
+        <div class="button-container">
+            <a class="btn btn-primary btn-lg" href="{% url 'checkmenu' %}" role="button">주문확인</a>
+            <a class="btn btn-outline-primary btn-lg" href="{% url 'menu' %}" role="button">취소</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

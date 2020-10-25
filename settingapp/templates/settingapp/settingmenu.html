@@ -1,0 +1,84 @@
+{% extends 'main/base.html' %} {% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'settingapp/css/settingmenu.css' %}" />
+{% endblock css %}
+
+<!-- setting.html용 boss Navbar -->
+{% block nav %}
+<nav class="navbar sticky-top navbar-light nav-color">
+    <a class="navbar-brand" href="{% url 'boss' %}">
+        <img src="{% static 'main/img/logo/OK_가로형v.png' %}" width="130" height="30" margin-left="20" class="d-inline-block align-top" alt=" " loading="lazy" />
+    </a>
+
+    <div class="bossbuttons">
+        <a href="{% url 'logout' %}" class="btn btn-primary">로그아웃</a>
+        <a href="{% url 'order' %}" class="btn btn-primary">주문확인</a>
+        <a href="{% url 'setting' %}" class="btn btn-primary">설정</a>
+    </div>
+</nav>
+{% endblock nav %}
+{% block content %}
+<div class="menu">
+    <div class="card">
+        <a href="{% url 'addmenu' %}" type="button" class="btn btn-secondarybtn">+</a>
+    </div>
+    {% for menu in menus.all %}
+    {% if menu.user_id == user %}
+    <div class="card">
+        {% if menu.m_img %}
+        <img src="{{menu.m_img.url}}" class="card-img-top" alt="..." />
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ menu.m_name }}</h5>
+            <div class="category">
+                {% if menu.c_id == 1 %}
+                <a class="btn btn-primary">커피</a>
+                {% elif menu.c_id == 2 %}
+                <a class="btn btn-primary">주스</a>
+                {% elif menu.c_id == 3 %}
+                <a class="btn btn-primary">티</a>
+                {% elif menu.c_id == 4 %}
+                <a class="btn btn-primary">스무디/프라푸치노</a>
+                {% elif menu.c_id == 5 %}
+                <a class="btn btn-primary">논커피</a>
+                {% elif menu.c_id == 6 %}
+                <a class="btn btn-primary">디저트</a>
+                {% endif %}
+            </div>
+            <!-- <a>{{menu.c_id}}</a> -->
+            <!-- <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                카테고리
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item">커피</a>
+                    <a class="dropdown-item">쥬스</a>
+                    <a class="dropdown-item">티</a>
+                    <a class="dropdown-item">스무디/프라포치노</a>
+                    <a class="dropdown-item">논커피</a>
+                    <a class="dropdown-item">디저트</a>
+                </div>
+            </div> -->
+        
+        <p class="card-text">{{ menu.m_info }}</p>
+        <span class="price">{{ menu.m_price }}원</span>
+        <a href="{% url 'editmenu' pk=menu.pk %}" class="btn btn-primary">수정</a>
+        <a href="{% url 'delete' pk=menu.pk %}" class="btn btn-primary">삭제</a>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <!-- 예시 -->
+    <div class="card">
+        <img src="{% static 'settingapp/img/아이스아메리카노.jpg' %}" class="card-img-top" alt="..." />
+        <div class="card-body">
+            <h5 class="card-title">메뉴 이름</h5>
+            <a href="#" class="btn btn-primary">카테고리</a>
+            <p class="card-text">예시입니다. 등록된 메뉴들이 이러한 형식으로 보여집니다.</p>
+            <span class="price">15000원</span>
+            <a href="#" class="btn btn-primary">수정</a>
+            <a href="#" class="btn btn-primary">삭제</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

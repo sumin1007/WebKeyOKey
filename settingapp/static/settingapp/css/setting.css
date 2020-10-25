@@ -1,0 +1,31 @@
+h1 {
+    margin-top: 50px;
+    font-size: 100px;
+    text-align: center;
+}
+
+.card {
+    float: left;
+    /* margin-left: 123px; */
+    /* margin-top: 50px; */
+    margin: 10px;
+    text-align: center;
+    width: 21rem;
+    height: 18rem;
+    border-radius: 55px;
+    background-color: #ffb793;
+}
+
+.btn-link {
+    font-size: 50px;
+    margin-top: 4rem;
+    color: black;
+}
+
+h6 {
+    font-size: 25px;
+}
+
+.container {
+    width: max-content;
+}

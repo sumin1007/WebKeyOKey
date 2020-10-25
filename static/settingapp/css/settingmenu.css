@@ -1,0 +1,21 @@
+.card{
+    float: left;
+    margin-left: 35px;
+    margin-top: 10px;
+    width: 340px;
+    height: 400px;
+}
+
+.btn-secondarybtn{
+    text-align: center;
+    width: 340px;
+    height: 400px;
+    font-size: 200px;
+    font-style: ;
+}
+
+.menu .card img {
+    width: 200px;
+    height: 200px;
+    margin-left: 60px;
+}

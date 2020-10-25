@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %} {% load static %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/boss.css' %}" />
+{% endblock css %}
+
+<!-- Bossnavbar 변형 -->
+{% block nav %}
+<nav class="navbar sticky-top navbar-light nav-color">
+    <a class="navbar-brand" href="{% url 'boss' %}">
+        <img src="{% static 'main/img/logo/ㅇㅋ_세로형v.png' %}" width="30" height="30" class="d-inline-block align-top" alt=" " loading="lazy" />
+        웹키오키
+    </a>
+    <a class="btn btn-primary" href="{% url 'logout' %}" role="button">로그아웃</a>
+</nav>
+{% endblock nav %}
+
+<!-- Content -->
+{% block content %}
+<div class="container">
+    <div class="bossmenu">
+        <ul>
+            <a href="{% url 'menu' %}"
+                ><li class="menubox">메뉴페이지<br />(for소비자)</li></a
+            >
+            <a href="{% url 'order' %}"><li class="menubox">주문확인</li></a>
+            <a href="{% url 'setting' %}"><li class="menubox">설정</li></a>
+        </ul>
+    </div>
+</div>
+{% endblock %}

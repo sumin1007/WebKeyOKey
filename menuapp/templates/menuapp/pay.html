@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %} {% load static %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'menuapp/css/pay.css' %}" />
+{% endblock css %}
+
+<!-- Navbar -->
+
+<!-- Content -->
+{% block content %}
+<div class="container">
+    <div class="alert alert-primary">
+        <h3>결제 금액</h3>
+        <h1><strong>{{ money }}원</strong></h1>
+    </div>
+    <p class="comment">결제 방식을 선택해주세요 :)</p>
+    <ul>
+        <li>
+            <a href="{% url 'success' %}">
+                <div class="card">
+                    <img src="{% static 'menuapp/img/credit-card.png' %}" class="card-img-top" alt="카드결제" />
+                    <div class="card-body">
+                        
+                        <p class="card-text"><h5><strong>카드결제</strong></h5>IC칩을 끝까지 밀어 넣어주세요.</p>
+                    </div>
+                </div></a
+            >
+        </li>
+        <li>
+            <a href="{% url 'success' %}">
+            <div class="card">
+                <img src="{% static 'menuapp/img/samsung-pay.png' %}" class="card-img-top" alt="삼성페이" />
+                <div class="card-body">
+                    <p class="card-text"><h5><strong>삼성페이</strong></h5>휴대폰을 포스기에 가까이 대주세요.</p>
+                </div>
+            </div></a>
+        </li>
+        <li>
+            <a href="{% url 'success' %}">
+            <div class="card">
+                <img src="{% static 'menuapp/img/kakao-pay.png' %}" class="card-img-top" alt="카카오페이" />
+                <div class="card-body">
+                    <p class="card-text"><h5><strong>카카오페이</strong></h5>앱을 실행한 후 QR코드에 갖다대세요.</p>
+                </div>
+            </div></a>
+        </li>
+    </ul>
+    <div class="button-container">
+        <a class="btn btn-outline-primary" href="{% url 'checkmenu' %}" role="button">결제취소</a>
+    </div>
+</div>
+{% endblock content %}

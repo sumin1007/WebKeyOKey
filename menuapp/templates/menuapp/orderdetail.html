@@ -1,0 +1,95 @@
+{% extends 'main/base.html' %}
+{% load static %} {% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'menuapp/css/orderdetail.css' %}" />
+{% endblock css %}
+
+<!-- order.html용 boss Navbar -->
+{% block nav %}
+<nav class="navbar sticky-top navbar-light nav-color">
+    <a class="navbar-brand" href="{% url 'boss' %}">
+        <img src="{% static 'main/img/logo/OK_가로형v.png' %}" width="130" height="30" margin-left="20" class="d-inline-block align-top" alt=" " loading="lazy" />
+    </a>
+
+    <div class="bossbuttons">
+        <a href="{% url 'logout' %}" class="btn btn-primary">로그아웃</a>
+        <a href="{% url 'sales' %}" class="btn btn-primary">매출확인</a>
+        <a href="{% url 'setting' %}" class="btn btn-primary">설정</a>
+    </div>
+</nav>
+{% endblock nav %}
+
+{% block content %}
+<div class="orderdetail">
+    <h1>주문 번호 {{ p_or.order_num }}번 고객님 입니다</h1>
+    {% for p in p_or.orders.all %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ p.or_name }}</strong>
+        {% for option in p.or_options.all %}
+            {{ option.option_name }}
+        {% endfor %}
+        {{ p.or_count }}개
+        {% if p.or_takeout %}
+            <p>테이크아웃</p>
+            {% else %}
+            <p>매장</p>
+            {% endif %}
+        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true" onclick="location.href ='{% url 'delete_order' pk=p.pk %}'">&times;</span>
+        </button> -->
+        </div>
+        {% endfor %}
+
+        <!-- order 페이지 돌아가기 -->
+        <a href="{% url 'order' %}" class="btn btn-primary">이전</a>
+        <!-- 제조 완료 -->
+        <a href="{% url 'delete_order' pk=p_or.pk %}" class="btn btn-primary">완료</a>
+        
+    <!-- <div class="ordercard"></div>
+        <ol type="1">
+            <div class="card" style="width: 18rem">
+                <h3>
+                    <li class="menu-number">메뉴</li>
+                </h3>
+                <p class="options">옵션</p>
+                <p class="quantity">수량</p>
+                <p class="take">매장/포장 표시</p>
+            </div>
+            <div class="card" style="width: 18rem">
+                    <h3>
+                        <li class="menu-number">메뉴</li>
+                    </h3>
+                    <p class="options">옵션</p>
+                    <p class="quantity">수량</p>
+                    <p class="take">매장/포장 표시</p>
+            </div>
+            <div class="card" style="width: 18rem">
+                <h3>
+                    <li class="menu-number">메뉴</li>
+                </h3>
+                <p class="options">옵션</p>
+                <p class="quantity">수량</p>
+                <p class="take">매장/포장 표시</p>
+            </div>
+            <div class="card" style="width: 18rem">
+                <h3>
+                    <li class="menu-number">메뉴</li>
+                </h3>
+                <p class="options">옵션</p>
+                <p class="quantity">수량</p>
+                <p class="take">매장/포장 표시</p>
+            </div>
+            <div class="card" style="width: 18rem">
+                <h3>
+                    <li class="menu-number">메뉴</li>
+                </h3>
+                <p class="options">옵션</p>
+                <p class="quantity">수량</p>
+                <p class="take">매장/포장 표시</p>
+            </div>
+        </ol>
+    </div> -->
+
+    <!-- <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">이전</a> -->
+    <!-- <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">완료</a> -->
+</div>
+{% endblock content %}

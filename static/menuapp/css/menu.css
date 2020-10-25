@@ -1,0 +1,71 @@
+.layout {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.sidebar {
+    background-color: #ff9966;
+    padding: 1.5rem;
+    width: max-content;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar h3 {
+    font-family: "GmarketSansBold";
+    color: white;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.category a li {
+    color: white;
+    margin-top: 1rem;
+}
+
+.maincontainer {
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+}
+
+.button-container {
+    position: fixed;
+    left: 88%;
+    top: 90%;
+    padding: 1rem;
+    z-index: 1;
+}
+
+.menulist {
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.menulist .card {
+    width: 13rem;
+    margin: 0.5rem;
+}
+
+.menulist .card img {
+    width: 200px;
+    height: 200px;
+}
+
+.menulist .card .card-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    vertical-align: middle;
+    background-color: white;
+    border: 0;
+}

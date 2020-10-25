@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %} {% load static %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'menuapp/css/success.css' %}" />
+{% endblock css %}
+
+<!-- Navbar -->
+
+<!-- Content -->
+{% block content %}
+<div class="container">
+    <img class="bills" src="{% static 'menuapp/img/bills.png' %}" alt="" />
+    <p>결제가 완료되었습니다!</p>
+    <p>아래 주문번호를 확인해주세요.</p>
+    <h2>{{ pay.order_num }}</h2>
+    <a class="btn btn-primary" href="{% url 'menu' %}" role="button">종료</a>
+</div>
+{% endblock content %}

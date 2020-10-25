@@ -1,0 +1,117 @@
+{% extends 'main/base.html' %} {% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'settingapp/css/addmenu.css' %}" />
+{% endblock css %}
+
+{% block content %}
+<div class="all_addmenu">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="menu_name">
+        <label for="exampleFormControlInput1">메뉴이름</label>
+        <input type="text" class="form-control" name="m_name" value="{{m_name}}" />
+    </div>
+    <div class="category">
+        <input type="radio" name="c_id" id="c_id1" value="1">
+        <label for="c_id1">커피</label><br>
+        <input type="radio" name="c_id" id="c_id2" value="2">
+        <label for="c_id2">주스</label><br>
+        <input type="radio" name="c_id" id="c_id3" value="3">
+        <label for="c_id3">티</label><br>
+        <input type="radio" name="c_id" id="c_id4" value="4">
+        <label for="c_id4">스무디/프라푸치노</label><br>
+        <input type="radio" name="c_id" id="c_id5" value="5">
+        <label for="c_id5">논커피</label><br>
+        <input type="radio" name="c_id" id="c_id6" value="6">
+        <label for="c_id6">디저트</label>
+    </div>
+    <div class="information">
+        <label for="exampleFormControlInput1">메뉴정보</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="메뉴에 대한 간단한 설명을 적어주세요." rows="3" name="m_info" value="{{m_info}}"></textarea>
+    </div>
+    <div class="img">
+        <label for="exampleFormControlFile1">메뉴사진</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="m_img" value="{{m_img}}" multiple />
+    </div>
+    <div class="price">
+        <label for="exampleFormControlSelect2">가격(원)</label>
+        <div class="input-group-append">
+            <input type="text" name="m_price" value="{{m_price}}" />
+            <span class="input-group-text">₩</span>
+        </div>
+    </div>
+    <div class="option_check">
+        <p>옵션 확인</p>
+        <label for="exampleFormControlSelect2">포장(Take out)가능합니까?</label>
+        <input type="checkbox" id="exampleFormControlSelect2" checked switch="none" name='takeout' value="True"/>
+        <!-- <label for="switch"></label> -->
+    </div>
+    <div class="other_options">
+        <h4>기타옵션</h4>
+        {% for m in options.all %}
+        <input type="checkbox" name="option[]" value="{{m}}">{{ m.option_name }}({{m.option_price}}원)
+        {% endfor %}
+        <!-- 예시 -->
+        <!-- <div class="input-group-prepend">
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <label for="exampleFormControlSelect2">옵션2</label>
+                </div>
+                <input type="text" placeholder="옵션명" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                <label for="exampleFormControlSelect2">가격(원)</label>
+                <div class="input-group-append">
+                    <input type="text" />
+                    <span class="input-group-text">₩</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group-prepend">
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <label for="exampleFormControlSelect2">옵션3</label>
+                </div>
+                <input type="text" placeholder="옵션명" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                <label for="exampleFormControlSelect2">가격(원)</label>
+                <div class="input-group-append">
+                    <input type="text" />
+                    <span class="input-group-text">₩</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group-prepend">
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <label for="exampleFormControlSelect2">옵션4</label>
+                </div>
+                <input type="text" placeholder="옵션명" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                <label for="exampleFormControlSelect2">가격(원)</label>
+                <div class="input-group-append">
+                    <input type="text" />
+                    <span class="input-group-text">₩</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group-prepend">
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                    <label for="exampleFormControlSelect2">옵션5</label>
+                </div>
+                <input type="text" placeholder="옵션명" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                <label for="exampleFormControlSelect2">가격(원)</label>
+                <div class="input-group-append">
+                    <input type="text" />
+                    <span class="input-group-text">₩</span>
+                </div>
+            </div>
+        </div> -->
+        <br>
+
+        <a href="{% url 'option' %}" type="button" class="btn btn-outline-primary">기타옵션추가하기</a>
+
+        <input href="{% url 'settingmenu' %}" type="submit" class="btn btn-primary btn-lg btn-block" value="메뉴등록하기"></input>
+    </div>
+</form>
+{% endblock content %}

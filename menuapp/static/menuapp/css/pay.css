@@ -1,0 +1,41 @@
+.container {
+    padding: 5rem 10rem;
+}
+
+.alert-primary {
+    color: black;
+    background-color: #ffb793;
+    /* border-color: #ff9966; */
+    border: 5px solid #ff9966;
+    text-align: center;
+}
+.comment {
+    text-align: center;
+    font-size: larger;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+ul li {
+    margin: 0.5rem;
+    justify-content: center;
+    width: 30%;
+}
+
+.card {
+    border: 2px solid #ff9966;
+}
+
+ul li .card .card-img-top {
+    padding: 2rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}

@@ -1,0 +1,66 @@
+.layout {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.menu {
+    width: 35%;
+    padding: 1rem;
+}
+
+.optionform {
+    width: 65%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.optionform label {
+    font-size: large;
+    margin: 0 1rem;
+}
+
+.optionform .takeout {
+    margin-bottom: 1rem;
+}
+
+.optionform .count {
+    margin-bottom: 1rem;
+}
+
+.optionform .option {
+    margin: 1rem;
+}
+
+.optionform .option ul {
+    border: 1px solid #ff9966;
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.float-right {
+    float: right;
+}
+
+.alert {
+    margin: 1rem;
+}
+
+.alert-primary {
+    color: black;
+    background-color: #ffb793;
+    border-color: #ff9966;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.button-container .btn {
+    padding: 0.5rem 3rem;
+}

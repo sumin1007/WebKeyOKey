@@ -1,0 +1,104 @@
+{% extends 'main/base.html' %}{% load static %}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/home.css' %}" />
+{% endblock css%}
+
+<!-- HOME.html용 Navbar -->
+{% block nav %}
+    <nav class="navbar sticky-top navbar-light nav-color home-nav">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'main/img/logo/OK_가로형v.png' %}" width="130" height="30" class="d-inline-block align-top" alt=" "
+            loading="lazy" />
+        </a>
+
+        <div class="navbutton">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn btn-primary">로그아웃</a>
+            {% else %}
+            <a href="{% url 'signup' %}" class="btn btn-primary">회원가입</a>
+            {% endif %}
+        </div>
+    </nav>
+{% endblock nav %}
+
+<!-- Content -->
+{% block content %}
+
+<header>
+    <div class="mainbox">
+        <h2>웹키오키</h2>
+        <p1> W E B K E Y O K E Y </p1><br><br>
+        <p2>"웹키오키 사이트를 사용하여 간편하게 당신의 가게를 운영해보세요." </p2><br>
+
+        <img src="{% static 'main/img/homeimg/헤더1.png' %}">
+        <img src="{% static 'main/img/homeimg/헤더2.png' %}">
+        <img src="{% static 'main/img/homeimg/헤더3.png' %}">
+        <img src="{% static 'main/img/homeimg/헤더4.png' %}">
+        <img src="{% static 'main/img/homeimg/헤더5.png' %}">
+
+        {% if user.is_authenticated %}
+        <br><br><br><br>
+            <h1>안녕하세요, {{user.username}}님!</h1>
+            <a href="{% url 'boss' %}" class="signinbutton">시작하기</a>
+            
+        {% else %}
+            <div class="signupbox">
+                <form method="POST" action="/signin">
+                    {% csrf_token %}
+                    <div class="id">
+                        <div class="col">
+                            <input type="text" class="form-control input-style" placeholder="이름(사업자번호)" name="u_id" value="{{u_id}}">
+                        </div>
+                    </div>
+
+                    <div class="password">
+                        <div class="col">
+                            <input type="text" class="form-control input-style" placeholder="비밀번호" name="password" value="{{password}}">
+                        </div>
+                    </div>
+                    <input type="submit" value="로그인" class="signinbutton"></input> <br>
+                </form>
+            </div>
+            <a class="findpassword" href="{% url 'findpassword' %}">비밀번호 찾기</a>
+        {% endif %}
+    </div>
+
+    {% for message in messages %}
+        <div class="alert alert-warning">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+            {{ message }}
+        </div>
+    {% endfor %}
+</header>
+
+<section>
+    <img src="{% static 'main/img/homeimg/설명그림.png' %}"><br>
+    <img src="{% static 'main/img/homeimg/키오스크단점.png' %}"><br>
+    <img src="{% static 'main/img/homeimg/웹키오키설명주홍.png' %}"><br>
+    <img src="{% static 'main/img/homeimg/페이지그림.png' %}"><br>
+    <img src="{% static 'main/img/homeimg/이미지.png' %}"><br>
+
+    <form>
+        <a class="btn btn-primary signupbutton" href="{% url 'signup' %}">
+        회원가입
+        </a>
+    </form>
+</section>
+
+<footer>
+    <div class="foot row">
+        <div class="name col-11">
+            <pre>
+                <p3> 함진경 유찬미 김수민 이광현 이지선 김선재       Copyright 2020. 멋쟁이 사자처럼 8기(LIKE LION) & 롯데(LOTTE). All rights reserved.</p3>
+            </pre>
+        </div>
+    
+        <div class="up col-1">
+            <a href=""><p> ↑ </p></a>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

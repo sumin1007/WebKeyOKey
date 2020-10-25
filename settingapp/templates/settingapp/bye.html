@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %} {% load static%}
+
+<!-- CSS -->
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'settingapp/css/bye.css' %}" />
+{% endblock css%}
+
+<!-- boss Navbar -->
+{% block nav %}
+<nav class="navbar sticky-top navbar-light nav-color">
+    <a class="navbar-brand" href="{% url 'boss' %}">
+        <img src="{% static 'main/img/logo/OK_가로형v.png' %}" width="130" height="30" margin-left="20" class="d-inline-block align-top" alt=" " loading="lazy" />
+    </a>
+
+    <div class="bossbuttons">
+        <a href="{% url 'order' %}" class="btn btn-primary">주문확인</a>
+        <a href="{% url 'setting' %}" class="btn btn-primary">설정</a>
+    </div>
+
+</nav>
+{% endblock nav %}
+<!-- Content -->
+
+{% block content %}
+<div class="all">
+    <div class="container">
+        <div class="ment">
+            <h1>서비스 해지</h1>
+        </div>
+
+        <div class="detail">
+            <p>서비스 해지하시면 현재 등록되어 있는 모든 데이터가 사라지며 다시 복구할 수 없습니다.<br>그래도 정말 저희 웹키오키 서비스를 해지하시겠습니까?<br>If you cancel the service, all currently registered data will be lost and cannot be recovered. Are you sure you want to cancel our WEBKEYOKEY service?</p>
+        </div>
+
+        <div class="buttons">
+            <a class="btn btn-primary" role="button" href="{% url 'setting' %}">계속 사용하기</a>
+            <a class="btn btn-light" role="button" href="{% url 'delete_user' %}">해지하기</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

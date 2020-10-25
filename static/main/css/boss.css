@@ -1,0 +1,27 @@
+.bossmenu {
+    /* padding: 3rem 0; */
+    margin: 8rem 0rem 8rem 0rem;
+    display: flex;
+    justify-content: center;
+}
+
+.bossmenu ul {
+    display: flex;
+    width: fit-content;
+    justify-content: space-between;
+}
+
+.menubox {
+    width: 15rem;
+    height: 15rem;
+    border: 3px solid #ff9966;
+    border-radius: 0.5rem;
+    margin: 3rem;
+    padding: 2rem;
+    background: #ffb793;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: x-large;
+}
